@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Tutor</title>
+	<h1>Presentor form</h1>
+	<meta charset="utf-8">
+	<style>
+		body {background-color: #F6E528}
+	</style>
+</head>
+<body>
+<fieldset>
+	<legend><i>Required information</i></legend>
+	<label>First Name <input type="text" name="firstName"></label>
+	<label>Last Name <input type="text" name="lastName"></label><br>
+	<label>What's your email address? <input type="text" name="emailAddress"></label><br><br>
+	<label>How many activities do you want to do? <input type="number" name="numPres"></label><br>
+	<label>How long are those activities going to be? (minutes) <input type="number" name="duration"></label><br>
+	<label>What is the <i>maximum</i> number of people that can attend the activity? <input type="number" name="numSeats"></label><br>
+	<label>Does the activity require participants to pay a fee to cover material costs?</label><br>
+	<label><input type="radio" name="extraFee" value="Yes"> Yes</label><br>
+	<label><input type="radio" name="extraFee" value="No"> No</label><br>
+	<label>If extra fees apply, please explain what they are for. <input type="text" name="feeReason"></label><br><br>
+	<label>In which of those sections does you think your activity belong the most? (More than one can apply)</label><br>
+	<label><input type="radio" name="field" value="Science"> Science</label><br>
+	<label><input type="radio" name="field" value="Art"> Art</label><br>
+	<label><input type="radio" name="field" value="Technology"> Technology</label><br>
+	<label><input type="radio" name="field" value="Sustainability"> Sustainability</label><br><br>
+
+</fieldset> <br>
+<form>
+	<input type="button" name="Apply" value="Apply" onclick="window.location.href='file:Thankyou.html'">
+	<br><br>
+</form>
+</body>
+</html>

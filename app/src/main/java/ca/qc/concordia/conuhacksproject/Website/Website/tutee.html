@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Tutee</title>
+	<h1>Participant form</h1>
+	<meta charset="utf-8">
+	<style>
+		body {background-color: #F6E528}
+	</style>
+</head>
+<body>
+<fieldset>
+	<legend><i>Required information</i></legend>
+	<label>First Name <input type="text" name="firstName"></label>
+	<label>Last Name <input type="text" name="lastName"></label><br>
+	<label>What's your email address? <input type="text" name="emailAddress"></label><br><br>
+	<label>What is the maximum duration of an activity you would attend? (minutes) <input type="number" name="duration"></label><br><br>
+	<label>Are you willing to pay fees that would cover the cost of supplies used during activities? </label><br>
+	<label><input type="radio" name="extraFee" value="Yes"> Yes</label><br>
+	<label><input type="radio" name="extraFee" value="No"> No</label><br><br>
+	<label>What do you want the activities to be related to the most? (More than one can apply)</label><br>
+	<label><input type="radio" name="field" value="Science"> Science</label><br>
+	<label><input type="radio" name="field" value="Art"> Art</label><br>
+	<label><input type="radio" name="field" value="Technology"> Technology</label><br>
+	<label><input type="radio" name="field" value="Sustainability"> Sustainability</label><br>
+</fieldset> <br>
+<form>
+	<input type="button" name="Apply" value="Apply" onclick="window.location.href='file:Thankyou.html'">
+	<br><br>
+</form>
+</body>
+</html>
