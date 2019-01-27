@@ -30,8 +30,8 @@ import java.util.Map;
 public class MainActivity extends AppCompatActivity {
 
     int radioButtonId;
-    String serverURL = "http://172.30.17.249/update_info.php";
-    //String serverURL = "http://localhost/update_info.php";
+    //String serverURL = "http://[Ipv4-address-goes-here]/update_info.php";
+    String serverURL = "http://localhost/update_info.php";
     AlertDialog.Builder builder;
     String userName;
 
