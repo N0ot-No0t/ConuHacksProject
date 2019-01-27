@@ -3,6 +3,7 @@ package ca.qc.concordia.conuhacksproject;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.res.Resources;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -103,39 +104,56 @@ public class MainActivity extends AppCompatActivity {
 
         RadioButton buttonChosen = ((RadioButton)findViewById(radioButtonId));
 
+        String google = "https://www.google.ca/";
+        Uri webaddress = Uri.parse(google);
+
+        //intent = new Intent(MainActivity.this, ManagerMenu.class);
+
+        final Intent goToGoogle = new Intent(Intent.ACTION_VIEW, webaddress);
+
         buttonSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 Intent intent = null;
 
+                outerloop:
                 switch (radioButtonId){
 
                     case 0:
 
-                        intent = new Intent(MainActivity.this, ManagerMenu.class);
 
-                        break;
+
+                        startActivity(goToGoogle);
+                        break outerloop;
 
                     case 1:
 
                         intent = new Intent(MainActivity.this, AssistantMenu.class);
 
-
                         break;
+
+
 
                     case 2:
 
-                        intent = new Intent(MainActivity.this, TalkerMenu.class);
+                        startActivity(goToGoogle);
+                        break outerloop;
 
-                        break;
+                        //intent = new Intent(MainActivity.this, TalkerMenu.class);
+
+                        //break;
 
                 }
 
 
                 //myListView.removeView(v);
+                    try {
+                        startActivity(intent);
+                    }catch (Exception e){
 
-                startActivity(intent);
+                    }
+
             }
         });
 
