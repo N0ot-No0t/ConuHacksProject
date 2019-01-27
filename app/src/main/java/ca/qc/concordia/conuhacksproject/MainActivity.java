@@ -132,6 +132,9 @@ public class MainActivity extends AppCompatActivity {
 
                 }
 
+
+                //myListView.removeView(v);
+
                 startActivity(intent);
             }
         });

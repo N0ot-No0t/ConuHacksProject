@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">ConUHacksProject</string>
-    
+
     <string-array name="workshops">
         <item>Workshop about compost</item>
         <item>Workshop about programming (Java)</item>
@@ -17,6 +17,12 @@
         <item>Composting 101 and how to get started.</item>
         <item>Intro workshop to Java for new programmers.</item>
         <item>Beginner techniques to elevate your drawing skills.</item>
+    </string-array>
+
+    <string-array name="extraDetails">
+        <item>Help Concordia cut down on organic waste sent to the landfill. Learn what can be composted at Concordia, where to compost, and what happens to the compost at Concordia.</item>
+        <item>In this workshop, explore the very basics of computer programming and see how it can help you with your graduate studies in any discipline.</item>
+        <item>We offer drawing classes in Montreal that range from introductory to advanced levels.</item>
     </string-array>
 
 </resources>
