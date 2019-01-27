@@ -2,30 +2,55 @@ package ca.qc.concordia.conuhacksproject;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.content.res.Resources;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
 
     int radioButtonId;
 
+    ListView myListView;
+    String [] workshops;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        /*
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         getSupportActionBar().hide();
+        */
+
         setContentView(R.layout.activity_main);
+
+        Resources res = getResources();
+
+        myListView = (ListView) findViewById(R.id.myListView);
+        workshops = res.getStringArray(R.array.workshops);
+
+        myListView.setAdapter(new ArrayAdapter<String>(this, R.layout.my_listview_detail, workshops));
+
+
+
+
+
+
 
         TextView intputName = ((TextView)findViewById(R.id.inputTextName));
         RadioButton buttonManager = ((RadioButton)findViewById(R.id.buttonManager));
