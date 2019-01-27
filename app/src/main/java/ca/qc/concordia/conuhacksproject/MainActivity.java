@@ -12,8 +12,11 @@ import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
+
+    int radioButtonId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,9 +34,43 @@ public class MainActivity extends AppCompatActivity {
 
         ImageButton buttonSubmit = ((ImageButton)findViewById(R.id.btnSubmit));
 
-        RadioGroup rgMainScreen = ((RadioGroup)findViewById(R.id.btnGrpUser));
+        final RadioGroup rgMainScreen = ((RadioGroup)findViewById(R.id.btnGrpUser));
 
-        final int radioButtonId = rgMainScreen.getCheckedRadioButtonId();
+        rgMainScreen.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+
+                View radioButton = rgMainScreen.findViewById(checkedId);
+                int index = rgMainScreen.indexOfChild(radioButton);
+
+                // Add logic here
+
+                switch (index) {
+                    case 0: //first button
+
+                        radioButtonId = 0;
+
+                        Toast.makeText(getApplicationContext(), "Selected button number " + index + 1, Toast.LENGTH_LONG).show();
+                        break;
+                    case 1: // second button
+
+                        radioButtonId = 1;
+
+                        Toast.makeText(getApplicationContext(), "Selected button number " + index + 1, Toast.LENGTH_LONG).show();
+                        break;
+
+                    case 2: // third button
+
+                        radioButtonId = 2;
+
+                        Toast.makeText(getApplicationContext(), "Selected button number " + index + 1, Toast.LENGTH_LONG).show();
+                        break;
+                }
+            }
+        });
+
+        //radioButtonId = rgMainScreen.getCheckedRadioButtonId();
 
         System.out.println(radioButtonId);
 
@@ -43,30 +80,32 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-
+                Intent intent = null;
 
                 switch (radioButtonId){
 
-                    case R.id.buttonManager:
+                    case 0:
 
+                        intent = new Intent(MainActivity.this, ManagerMenu.class);
+
+                        break;
+
+                    case 1:
+
+                        intent = new Intent(MainActivity.this, AssistantMenu.class);
 
 
                         break;
 
-                    case R.id.buttonAssistant:
+                    case 2:
 
-
-
-                        break;
-
-                    case R.id.buttonTalker:
-
-                        Intent intent = new Intent(MainActivity.this, TalkerMenu.class);
-                        startActivity(intent);
+                        intent = new Intent(MainActivity.this, TalkerMenu.class);
 
                         break;
 
                 }
+
+                startActivity(intent);
             }
         });
 

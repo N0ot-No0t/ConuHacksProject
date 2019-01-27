@@ -16,6 +16,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".ManagerMenu">
+        </activity>
+
+        <activity android:name=".TalkerMenu">
+        </activity>
+
+        <activity android:name=".AssistantMenu">
+        </activity>
     </application>
 
 </manifest>
