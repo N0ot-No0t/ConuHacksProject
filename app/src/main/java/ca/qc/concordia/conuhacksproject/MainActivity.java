@@ -1,7 +1,9 @@
 package ca.qc.concordia.conuhacksproject;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -14,9 +16,24 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.RetryPolicy;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class MainActivity extends AppCompatActivity {
 
     int radioButtonId;
+    String serverURL = "http://172.30.17.249/update_info.php";
+    //String serverURL = "http://localhost/update_info.php";
+    AlertDialog.Builder builder;
+    String userName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +44,9 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.activity_main);
 
-        TextView intputName = ((TextView)findViewById(R.id.inputTextName));
+        builder = new AlertDialog.Builder(MainActivity.this);
+
+        final TextView inputName = ((TextView)findViewById(R.id.inputTextName));
         RadioButton buttonManager = ((RadioButton)findViewById(R.id.buttonManager));
         RadioButton buttonAssistant = ((RadioButton)findViewById(R.id.buttonAssistant));
         RadioButton buttonTalker = ((RadioButton)findViewById(R.id.buttonTalker));
@@ -82,6 +101,17 @@ public class MainActivity extends AppCompatActivity {
 
                 Intent intent = null;
 
+                try{
+                    userName = inputName.getText().toString();
+
+                    //System.out.println(userName);
+                }catch (Exception ex){
+
+                    userName = "Invalid Name";
+
+                }
+
+
                 switch (radioButtonId){
 
                     case 0:
@@ -104,6 +134,57 @@ public class MainActivity extends AppCompatActivity {
                         break;
 
                 }
+
+                StringRequest stringRequest = new StringRequest(Request.Method.POST, serverURL,
+                        new Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
+
+                                builder.setTitle("Server Response");
+                                builder.setMessage("Response: "+response);
+                                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+
+                                        inputName.setText("");
+
+                                    }
+                                });
+
+                                AlertDialog alertDialog = builder.create();
+                                alertDialog.show();
+
+                            }
+                        }
+                        , new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                        Toast.makeText(MainActivity.this, "Error on response",Toast.LENGTH_SHORT).show();
+                        error.printStackTrace();
+
+                    }
+                }){
+
+                    @Override
+                    protected Map<String,String> getParams() throws AuthFailureError {
+                        Map<String,String> params = new HashMap<String,String>();
+                        params.put("userName",userName);
+                        return params;
+                    }
+                };
+
+                int socketTimeout = 30000; // 30 seconds. You can change it
+                RetryPolicy policy = new DefaultRetryPolicy(socketTimeout,
+                        DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                        DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+
+                stringRequest.setRetryPolicy(policy);
+
+                MySingleton.getInstance(MainActivity.this).addToRequestQueue(stringRequest);
+
+
+
 
                 startActivity(intent);
             }
