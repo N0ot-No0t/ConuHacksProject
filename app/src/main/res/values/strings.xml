@@ -7,13 +7,13 @@
         <item>Workshop about drawing</item>
     </string-array>
 
-    <string-array name="date">
+    <string-array name="dates">
         <item>10/03/2019</item>
         <item>15/05/2019</item>
         <item>02/08/2019</item>
     </string-array>
 
-    <string-array name="description">
+    <string-array name="descriptions">
         <item>Composting 101 and how to get started.</item>
         <item>Intro workshop to Java for new programmers.</item>
         <item>Beginner techniques to elevate your drawing skills.</item>

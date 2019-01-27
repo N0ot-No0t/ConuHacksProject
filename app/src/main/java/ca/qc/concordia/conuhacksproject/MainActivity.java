@@ -30,15 +30,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        /*
+
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         getSupportActionBar().hide();
-        */
+
 
         setContentView(R.layout.activity_main);
 
+
+        /*
         Resources res = getResources();
 
         myListView = (ListView) findViewById(R.id.myListView);
@@ -46,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
 
         myListView.setAdapter(new ArrayAdapter<String>(this, R.layout.my_listview_detail, workshops));
 
-
+        */
 
 
 
@@ -76,20 +78,20 @@ public class MainActivity extends AppCompatActivity {
 
                         radioButtonId = 0;
 
-                        Toast.makeText(getApplicationContext(), "Selected button number " + index + 1, Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Selected button number " + (index + 1), Toast.LENGTH_LONG).show();
                         break;
                     case 1: // second button
 
                         radioButtonId = 1;
 
-                        Toast.makeText(getApplicationContext(), "Selected button number " + index + 1, Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Selected button number " + (index + 1), Toast.LENGTH_LONG).show();
                         break;
 
                     case 2: // third button
 
                         radioButtonId = 2;
 
-                        Toast.makeText(getApplicationContext(), "Selected button number " + index + 1, Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Selected button number " + (index + 1), Toast.LENGTH_LONG).show();
                         break;
                 }
             }
